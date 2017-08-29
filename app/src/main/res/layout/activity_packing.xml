@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jiangxin.packing.Packing">
+
+    <TextView
+        android:id="@+id/hour_hint"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="select how many hours will you pack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/packing_code" />
+
+    <TextView
+        android:id="@+id/code_hint"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="input the packing code"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="33dp" />
+
+    <RadioGroup
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/hour_hint"
+        android:id="@+id/radioGroup"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="how many hours will you pack"
+        tools:layout_editor_absoluteY="150dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <RadioButton
+            android:id="@+id/oneHour"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="one hour"/>
+
+        <RadioButton
+            android:id="@+id/twoHour"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:text="two hours"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/packing_code"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:hint="packing code"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/code_hint" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:text="payment about the packing"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="9dp"
+        android:text="pay for the packing: $ "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="9dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="125dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="account balance:  $"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/account_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/payment"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        android:layout_marginLeft="0dp" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:text="confirm"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+</android.support.constraint.ConstraintLayout>
