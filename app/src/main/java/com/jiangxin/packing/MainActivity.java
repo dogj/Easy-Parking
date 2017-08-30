@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Packing.class));
+                startActivity(new Intent(MainActivity.this,HomePage.class));
             }
         });
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(info.contains("success")){
-                    startActivity(new Intent(MainActivity.this,Packing.class));
+                    startActivity(new Intent(MainActivity.this,HomePage.class));
                     SharedPreferences.Editor sharedata = getSharedPreferences("data", 0).edit();
                     sharedata.putString("username",username_string);
                     sharedata.commit();
