@@ -1,7 +1,7 @@
 <?php
 include_once 'database_conn.inc.php';
 
-$code = $_GET['code'];
+$code = $_POST['code'];
 
 $sql = "SELECT * FROM codes WHERE code ='$code'";
 $result = $conn->query($sql) or die (mysqli_connect_error());  

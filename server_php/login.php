@@ -1,8 +1,8 @@
 <?php
 include_once 'database_conn.inc.php';
 
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 $sql = "SELECT * FROM user WHERE username ='$username' AND password = '$password'";
 $result = $conn->query($sql) or die (mysqli_connect_error());  

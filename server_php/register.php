@@ -1,10 +1,8 @@
 <?php
 include_once 'database_conn.inc.php';
 
-// $name=$_GET['name'];
-// $age = $_GET['age'];
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 $sql = "INSERT INTO user VALUES (default, '{$username}','{$password}','','','','0');";
 
