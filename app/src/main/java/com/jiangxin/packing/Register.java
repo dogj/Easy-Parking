@@ -26,14 +26,12 @@ import java.util.List;
 public class Register extends AppCompatActivity {
     EditText username;
     EditText password;
-    EditText name;
-    EditText age;
+
     Button sign_in;
     Button register;
     String username_string;
     String password_string;
-    String name_string;
-    String age_string;
+
     TextView tip;
     boolean name_success;
     boolean psw_success;
@@ -44,8 +42,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.psw);
-        name = (EditText) findViewById(R.id.name);
-        age = (EditText) findViewById(R.id.age);
+
         sign_in = (Button) findViewById(R.id.sign_in);
         register = (Button) findViewById(R.id.register);
         tip = (TextView) findViewById(R.id.tip);
@@ -62,8 +59,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 username_string = username.getText().toString();
                 password_string = password.getText().toString();
-                name_string = name.getText().toString();
-                age_string = age.getText().toString();
+
                 //username check
                 if(!username_string.contains("@")){
                     username.setError("this should be a email address");
@@ -93,12 +89,11 @@ public class Register extends AppCompatActivity {
         @Override
         protected Long doInBackground(String... params) {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://dogj.000webhostapp.com/registe.php");
+            HttpPost httpPost = new HttpPost("http://dogj.000webhostapp.com/assignment2/register.php");
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username",username_string));
             nameValuePairs.add(new BasicNameValuePair("password",password_string));
-            nameValuePairs.add(new BasicNameValuePair("name",name_string));
-            nameValuePairs.add(new BasicNameValuePair("age",age_string));
+
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse response = httpClient.execute(httpPost);
@@ -107,6 +102,7 @@ public class Register extends AppCompatActivity {
 
                 SharedPreferences.Editor sharedata = getSharedPreferences("data", 0).edit();
                 sharedata.putString("username",username_string);
+                sharedata.putString("balance","0");
                 sharedata.commit();
 
                 runOnUiThread(new Runnable(){

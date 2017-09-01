@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Long doInBackground(String... params) {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://dogj.000webhostapp.com/login.php");
+            HttpPost httpPost = new HttpPost("http://dogj.000webhostapp.com/assignment2/login.php");
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username",username_string));
             nameValuePairs.add(new BasicNameValuePair("password",password_string));
@@ -89,10 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 Thread.sleep(2000);
 
 
-                if(info.contains("success")){
+                if(!(info.contains("fail"))){
                     startActivity(new Intent(MainActivity.this,HomePage.class));
                     SharedPreferences.Editor sharedata = getSharedPreferences("data", 0).edit();
                     sharedata.putString("username",username_string);
+                    String balance;
+                    balance = info;
+                    sharedata.putString("balance",balance);
                     sharedata.commit();
                 }
 

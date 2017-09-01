@@ -27,15 +27,15 @@ import java.util.List;
 public class Account extends AppCompatActivity {
 
     TextView username;
-    EditText name;
+
     EditText account_balance;
     EditText psw;
     TextView friends;
     Button update;
     Button cancel;
     String username_string;
-    String password_string;
-    String name_string;
+
+
     String account_balance_string;
     TextView tip;
     @Override
@@ -48,7 +48,7 @@ public class Account extends AppCompatActivity {
         setTitle("Account");
         data = "Current account = "+data;
         username = (TextView) findViewById(R.id.username);
-        name = (EditText) findViewById(R.id.name);
+
         account_balance = (EditText) findViewById(R.id.account_balance);
         psw = (EditText) findViewById(R.id.psw);
         tip = (TextView) findViewById(R.id.tip);
@@ -63,8 +63,8 @@ public class Account extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                password_string = psw.getText().toString();
-                name_string = name.getText().toString();
+
+
                 account_balance_string = account_balance.getText().toString();
                 new Update().execute();
             }
@@ -92,8 +92,6 @@ public class Account extends AppCompatActivity {
             HttpPost httpPost = new HttpPost("https://dogj.000webhostapp.com/update.php");
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username",username_string));
-            nameValuePairs.add(new BasicNameValuePair("password",password_string));
-            nameValuePairs.add(new BasicNameValuePair("name",name_string));
             nameValuePairs.add(new BasicNameValuePair("account_balance",account_balance_string));
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
