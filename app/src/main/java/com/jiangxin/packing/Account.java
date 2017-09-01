@@ -34,6 +34,10 @@ public class Account extends AppCompatActivity {
     Button update;
     Button cancel;
     String username_string;
+    String start_time;
+    String end_time;
+    String my_balance;
+    String my_code;
 
 
     String account_balance_string;
@@ -63,17 +67,30 @@ public class Account extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SharedPreferences sharedata = getSharedPreferences("data", 0);
+                start_time = sharedata.getString("start",null);
+                end_time=sharedata.getString("end",null);
+                my_balance=sharedata.getString("balance",null);
+                my_code=sharedata.getString("code",null);
 
                 account_balance_string = account_balance.getText().toString();
+                SharedPreferences.Editor sharedata2 = getSharedPreferences("data", 0).edit();
+                sharedata2.putString("balance",account_balance_string);
                 new Update().execute();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(new Intent(Account.this,HomePage.class));
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sharedata.edit().clear().commit();
-                startActivity(new Intent(Account.this,Packing.class));
+                startActivity(new Intent(Account.this,MainActivity.class));
             }
         });
 
@@ -89,10 +106,13 @@ public class Account extends AppCompatActivity {
         @Override
         protected Long doInBackground(String... params) {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://dogj.000webhostapp.com/update.php");
+            HttpPost httpPost = new HttpPost("http://dogj.000webhostapp.com/assignment2/update.php");
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username",username_string));
-            nameValuePairs.add(new BasicNameValuePair("account_balance",account_balance_string));
+            nameValuePairs.add(new BasicNameValuePair("balance",account_balance_string));
+            nameValuePairs.add(new BasicNameValuePair("park_code",my_code));
+            nameValuePairs.add(new BasicNameValuePair("start_time",start_time));
+            nameValuePairs.add(new BasicNameValuePair("end_time",end_time));
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse response = httpClient.execute(httpPost);

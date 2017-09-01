@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,7 +24,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Packing extends AppCompatActivity {
@@ -61,8 +64,21 @@ public class Packing extends AppCompatActivity {
         payment = (TextView) findViewById(R.id.payment);
         balance = (TextView) findViewById(R.id.account_balance);
         packing_cancel= (Button) findViewById(R.id.cancel_packing);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+        if(dayOfTheWeek.contains("六")){
+            charge=0;
+        }
+
         payment.setText(String.valueOf(charge));
         balance.setText(balance_string);
+
+
+
+        Toast.makeText(getApplicationContext(),dayOfTheWeek, Toast.LENGTH_SHORT).show();
+
+
 
         packing_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +106,6 @@ public class Packing extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
 
 
                 Time time = new Time();

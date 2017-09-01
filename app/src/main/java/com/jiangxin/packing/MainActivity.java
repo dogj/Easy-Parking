@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedata3 = getSharedPreferences("data", 0);
+        String data = sharedata3.getString("username",null);
+        if(data!=null){
+            startActivity(new Intent(MainActivity.this,HomePage.class));
+        }
+
+
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.psw);
@@ -54,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences sharedata = getSharedPreferences("data", 0);
-        String data = sharedata.getString("username",null);
+
         register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,Register.class)));
 
         sign_in.setOnClickListener(v -> {
