@@ -124,7 +124,7 @@ public class Register extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            startActivity(new Intent(Register.this,Packing.class));
+            startActivity(new Intent(Register.this,Parking.class));
 
             return null;
         }

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Packing extends AppCompatActivity {
+public class Parking extends AppCompatActivity {
     String username_string;
     String balance_string;
     String park_code_string;
@@ -83,7 +83,7 @@ public class Packing extends AppCompatActivity {
         packing_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Packing.this,HomePage.class));
+                startActivity(new Intent(Parking.this,HomePage.class));
             }
         });
 
@@ -122,7 +122,7 @@ public class Packing extends AppCompatActivity {
                 new packing_update().execute();
 
 
-                startActivity(new Intent(Packing.this,HomePage.class));
+                startActivity(new Intent(Parking.this,HomePage.class));
 
 
             }
@@ -167,7 +167,7 @@ public class Packing extends AppCompatActivity {
                     sharedata.putString("balance",balance_string);
                     sharedata.commit();
                     Thread.sleep(2000);
-                    startActivity(new Intent(Packing.this,HomePage.class));
+                    startActivity(new Intent(Parking.this,HomePage.class));
                 }
 
 

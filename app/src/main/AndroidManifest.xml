@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Packing" />
+        <activity android:name=".Parking" />
         <activity android:name=".Account" />
         <activity android:name=".Register" />
         <activity android:name=".HomePage"/>

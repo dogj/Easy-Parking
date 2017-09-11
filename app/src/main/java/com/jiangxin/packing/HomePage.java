@@ -59,7 +59,7 @@ public class HomePage extends AppCompatActivity {
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,Packing.class));
+                startActivity(new Intent(HomePage.this,Parking.class));
             }
         });
 
