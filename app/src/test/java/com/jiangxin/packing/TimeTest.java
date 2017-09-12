@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 import static org.junit.Assert.*;
@@ -15,23 +16,31 @@ import static org.junit.Assert.*;
 public class TimeTest {
     @Test
     public void getTime() throws Exception {
-        float input = 0;
-        String output[] ;
+        int input = 0;
+        String output[]=new String[2] ;
         String expected[];
-        float delta = 0;
+        String packing_start = df1.format(new Date());
+        String packing_end;
 
         SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
         df1.setTimeZone(TimeZone.getTimeZone("GMT+12"));
-        String output[0] = input.g
+        Date start = df1.parse(packing_start);
+        long end_time;
+        end_time = start.getTime() + 60 * 60 * 1000;
+        Date end = new Date(end_time);
+        packing_end = df1.format(end);
+
+        output[0]=packing_start;
+        output[1]=packing_end;
 
 
         Time testGetTime = new Time();
         expected = testGetTime.getTime(input);
-        assertEquals(expected, output, delta);
+        assertEquals(expected, output);
 
     }
 
-    @Before
+
 
 
 }
