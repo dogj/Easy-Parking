@@ -74,10 +74,10 @@ public class Account extends AppCompatActivity {
                 my_code=sharedata.getString("code",null);
 
                 account_balance_string = account_balance.getText().toString();
-                SharedPreferences.Editor sharedata2 = getSharedPreferences("data", 0).edit();
+                SharedPreferences.Editor sharedata2 = sharedata.edit();
                 sharedata2.putString("balance",account_balance_string);
                 sharedata2.commit();
-                new Update().execute();
+
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {

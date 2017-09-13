@@ -24,9 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Parking extends AppCompatActivity {
@@ -64,11 +62,13 @@ public class Parking extends AppCompatActivity {
         payment = (TextView) findViewById(R.id.payment);
         balance = (TextView) findViewById(R.id.account_balance);
         packing_cancel= (Button) findViewById(R.id.cancel_packing);
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        Date d = new Date();
-        String dayOfTheWeek = sdf.format(d);
-        if(dayOfTheWeek.contains("六")){
+//        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+//        Date d = new Date();
+//        String dayOfTheWeek = sdf.format(d);
+        if(Saturday.isSat()){
             charge=0;
+        }else {
+            charge =1.5;
         }
 
         payment.setText(String.valueOf(charge));
@@ -76,7 +76,7 @@ public class Parking extends AppCompatActivity {
 
 
 
-        Toast.makeText(getApplicationContext(),dayOfTheWeek, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),String.valueOf(Saturday.isSat()), Toast.LENGTH_SHORT).show();
 
 
 
