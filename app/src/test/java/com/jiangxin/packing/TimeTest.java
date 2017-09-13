@@ -16,13 +16,14 @@ import static org.junit.Assert.*;
 public class TimeTest {
     @Test
     public void getTime() throws Exception {
+        SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
         int input = 0;
         String output[]=new String[2] ;
         String expected[];
         String packing_start = df1.format(new Date());
         String packing_end;
 
-        SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+
         df1.setTimeZone(TimeZone.getTimeZone("GMT+12"));
         Date start = df1.parse(packing_start);
         long end_time;
