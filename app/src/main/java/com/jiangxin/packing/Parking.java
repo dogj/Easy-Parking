@@ -74,7 +74,10 @@ public class Parking extends AppCompatActivity {
         payment.setText(String.valueOf(charge));
         balance.setText(balance_string);
 
-
+        if(Sunday.isSun()){
+            Toast.makeText(getApplicationContext(),"Sunday is free, you can park" +
+                    " with no charge and no restrcition, you don't need to use the applicant", Toast.LENGTH_LONG).show();
+        }
 
         Toast.makeText(getApplicationContext(),String.valueOf(Saturday.isSat()), Toast.LENGTH_SHORT).show();
 
