@@ -39,9 +39,7 @@ public class TimeTest {
         expected = testGetTime.getTime(input);
         assertEquals(expected, output);
 
+
     }
-
-
-
 
 }
