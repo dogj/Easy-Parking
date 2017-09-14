@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button register;
     String username_string;
     String password_string;
-    Button button;
+
 
     TextView tip;
     String info;
@@ -53,14 +52,9 @@ public class MainActivity extends AppCompatActivity {
         sign_in = (Button) findViewById(R.id.sign_in);
         register = (Button) findViewById(R.id.register);
         tip = (TextView) findViewById(R.id.tip);
-        button = (Button) findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,HomePage.class));
-            }
-        });
+
+
 
 
         register.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,Register.class)));

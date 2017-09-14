@@ -27,10 +27,10 @@ import java.util.List;
 public class Account extends AppCompatActivity {
 
     TextView username;
-
+    TextView current_account_balance;
     EditText account_balance;
     EditText psw;
-    TextView friends;
+    Button Account_cancel;
     Button update;
     Button cancel;
     String username_string;
@@ -48,7 +48,10 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
         SharedPreferences sharedata = getSharedPreferences("data", 0);
         String data = sharedata.getString("username",null);
+
         username_string = data;
+        account_balance_string = sharedata.getString("balance",null);
+        my_balance = sharedata.getString("balance",null);
         setTitle("Account");
         data = "Current account = "+data;
         username = (TextView) findViewById(R.id.username);
@@ -58,10 +61,18 @@ public class Account extends AppCompatActivity {
         tip = (TextView) findViewById(R.id.tip);
         update = (Button) findViewById(R.id.register);
         cancel = (Button) findViewById(R.id.sign_in);
-        friends = (TextView) findViewById(R.id.friends);
-
+        current_account_balance = (TextView) findViewById(R.id.Account_current_balance);
+        Account_cancel = (Button) findViewById(R.id.Account_cancel);
         setTitle("Account");
         username.setText(data);
+        current_account_balance.setText("Current Account balance = $"+my_balance);
+        Account_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Account.this,HomePage.class));
+            }
+        });
+
 
 
         update.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +88,7 @@ public class Account extends AppCompatActivity {
                 SharedPreferences.Editor sharedata2 = sharedata.edit();
                 sharedata2.putString("balance",account_balance_string);
                 sharedata2.commit();
-
+                new Update().execute();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
