@@ -19,8 +19,6 @@ public class SundayTest {
 
         assertEquals(result,expect);
 
-
-
     }
 
 }
